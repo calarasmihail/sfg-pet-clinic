@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
   <meta charset="UTF-8">
   <title>List of Pet Owners</title>
 </head>
 <body>
 
-<h1 th:text="'List of Owners'">List of Pet Owners</h1>
+<h2 th:text="'List of Owners'">Owners List</h2>
 
-<table>
+<table class="table table-striped">
   <thead>
   <tr>
-    <th>Id</th>
-    <th>First Name</th>
-    <th>Last Name</th>
+    <th style="width: 150px;">Id</th>
+    <th style="width: 150px;">First Name</th>
+    <th style="width: 150px;">Last Name</th>
   </tr>
   </thead>
   <tbody>
-  <tr th:each="owner : ${owners}" >
+  <tr th:each="owner : ${owners}">
     <!--    What's gong to happen here: Model is going to have the element Owners. Here we iterate
       through each owner (th:each) from owners from listOfOwners method. That's will will create
       a table row for each owner in owners (tr)   -->
-<!--    <td th:text="${owner?.id}">1</td>-->
+    <!--    <td th:text="${owner?.id}">1</td>-->
     <td th:text="${owner.id}">1</td>
-<!--    owner? (? means null safe operator) -->
-<!--    <td th:text="${owner?.firstName}">Joe</td>-->
+    <!--    owner? (? means null safe operator) -->
+    <!--    <td th:text="${owner?.firstName}">Joe</td>-->
     <td th:text="${owner.firstName}">Joe</td>
-<!--    <td th:text="${owner?.lastName}">Buck</td>-->
+    <!--    <td th:text="${owner?.lastName}">Buck</td>-->
     <td th:text="${owner.lastName}">Buck</td>
   </tr>
   </tbody>
