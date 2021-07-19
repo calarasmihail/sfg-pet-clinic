@@ -25,8 +25,8 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements
 
   @Override
   public Set<Owner> findAll() {   // Method 'findAll()' recurses infinitely, and can only end by
-                                  // throwing an exception (because of this keyword). To fix,
-                                  // use super keyword, instead of this keyword. Change everywhere.
+    // throwing an exception (because of this keyword). To fix,
+    // use super keyword, instead of this keyword. Change everywhere.
     /*return this.findAll();*/
     return super.findAll();
   }
@@ -79,6 +79,9 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements
 
   @Override
   public Owner findByLastName(String lastName) {
-    return null;
+    return this.findAll()
+        .stream()
+        .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+        .findFirst().orElse(null);
   }
 }
